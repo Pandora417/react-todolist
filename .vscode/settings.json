@@ -1,0 +1,15 @@
+"vetur.format.defaultFormatter.html": "js-beautify-html",
+"vetur.format.defaultFormatter.js": "vscode-typ=script",
+"vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            "wrap_attributes": "auto"
+        },
+        "prettyhtml": {
+            "printWidth": 100,
+            "singleQuote": false,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+ },
+   // 一个制表符等于的空格数。在 `editor.detectIndentation` 启用时，根据文件内容，该设置可能会被覆盖。
+   "editor.tabSize": 2,
