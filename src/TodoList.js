@@ -1,6 +1,7 @@
 import React from 'react';
 
 class TodoList extends React.Component {
+  // ES6 构造器
   constructor (props) {
     super(props);
     this.state = {
@@ -8,6 +9,8 @@ class TodoList extends React.Component {
       inputValue: ''
     }
   }
+
+  // 点击add按钮
   handleAdd () {
     this.setState({
       list: [...this.state.list, this.state.inputValue], // 展开运算符
@@ -15,6 +18,7 @@ class TodoList extends React.Component {
     })
   }
 
+  // 点击行删除
   handleDelete (index) {
     const list = [...this.state.list]
     list.splice(index, 1)
@@ -23,12 +27,14 @@ class TodoList extends React.Component {
     })
   }
 
+  // 获取输入框的值
   handleInputChange (e) {
     this.setState({
       inputValue: e.target.value
     })
   }
 
+  // render函数
   render () {
     return (
       <div>
