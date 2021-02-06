@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TodoItem from './TodoItem';
 class TodoList extends React.Component {
   // ES6 构造器
   constructor (props) {
@@ -8,6 +8,10 @@ class TodoList extends React.Component {
       list: [],
       inputValue: ''
     }
+    // 使用bind(this) 会影响性能，这么写能提高性能
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   // 点击add按钮
@@ -38,11 +42,18 @@ class TodoList extends React.Component {
   render () {
     return (
       <div>
-        <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)} />
-        <button onClick={this.handleAdd.bind(this)}>add</button>
+        {/* <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)} /> */}
+        <input value={this.state.inputValue} onChange={this.handleInputChange} />
+        <button onClick={this.handleAdd}>add</button>
         <ul>
           {
-            this.state.list.map((item, index) => <li onClick={this.handleDelete.bind(this, index)} key={index}>{item}</li>)
+            // 不使用组件
+            // this.state.list.map((item, index) =>
+            //   <li onClick={this.handleDelete.bind(this, index)} key={index}>{item}</li>
+            // )
+            this.state.list.map((item, index) =>
+              <TodoItem deleteItem={this.handleDelete} key={index} content={item} index={index} />
+            )
           }
         </ul>
       </div>
